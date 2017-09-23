@@ -1,0 +1,112 @@
+Module main()
+    //Declare Variables
+    declare testType
+    declare testScore
+    declare mathClass = 0
+
+    //Call Modules
+    Call getTestType(testType)
+    Call getTestScore(testType, testScore)
+    
+    If testType == ACT OR testType == act Then
+        Call getActMathClass(testScore, mathClass)
+    Else if testType == SAT OR testType == sat Then
+        Call getSatMathClass(testScore, mathClass)
+    Else if testType == Compass OR testType == compass
+        Call getCompassMathClass(testScore, mathClass)
+    Else
+        display ("ERROR: Invalid testType. Please refresh page and reenter valid test Type."
+            + "\nValid answers are: ACT, act, SAT, sat, Compass, and compass.")
+    End If
+
+    Call displayCoReq(mathClass)
+End Module
+
+Module getTestType(testType)
+    display ("Which test did your student take? The ACT, SAT, or Compass?")
+    input testType
+    return testType
+End Module
+
+Module getTestScore(testType, testScore)
+    If testType == ACT Then
+        display ("What was the student's score on the Math portion of the ACT?")
+    Else if testType == SAT Then
+        display ("What was the student's score on the Math portion of the SAT?")
+    Else
+        display ("What was the student's score on the Algebra portion of the Compass?")
+    End If
+    input testScore
+    return testScore
+End Module
+
+Module getActMathClass(testScore, mathClass)
+    If testscore <= 18 AND testScore >= 1 Then
+        display ("Your student can take the following classes:"
+            + "\n\n1. Math for Liberal Arts"
+            + "\n2. Probability & Statistics"
+            + "\n3. Finite Math"
+            + "\n4. Foundations of Algebra"
+            + "\n\nWhat is the number of the class your student wants to take?")
+        input mathClass
+        return mathClass
+    If testScore <= 36 AND testScore >= 19 Then
+        display ("Clear to take college-level math")
+    If testScore < 1 AND testScore > 36 Then
+        display ("ERROR: Invalid test score answer. Please refresh page and reenter valid test score."
+            + "\nValid answers are numbers 1-36")
+    End If
+End Module
+
+Module getSatMathClass(testScore, mathClass)
+    If testscore <= 450 AND testScore >= 200 Then
+        display ("Your student can take the following classes:"
+            + "\n\n1. Math for Liberal Arts"
+            + "\n2. Probability & Statistics"
+            + "\n3. Finite Math"
+            + "\n4. Foundations of Algebra"
+            + "\n\nWhat is the number of the class your student wants to take?")
+        input mathClass
+        return mathClass
+    If testScore <= 800 AND testScore >= 460 Then
+        display ("Clear to take college-level math")
+    If testScore < 200 AND testScore > 800 Then
+        display ("ERROR: Invalid test score answer. Please refresh page and reenter valid test score."
+        + "\nValid answers are numbers 200-800")
+    End If
+End Module
+
+Module getCompassMathClass(testScore, mathClass)
+    If testscore <= 37 AND testScore >= 1 Then
+        display ("Your student can take the following classes:"
+            + "\n\n1. MATH 1010: Math for Liberal Arts"
+            + "\n2. MATH 1530: Probability & Statistics"
+            + "\n3. MATH 1630: Finite Math"
+            + "\n4. MATH 1000: Foundations of Algebra"
+            + "\n\nWhat is the number of the class your student wants to take?")
+        input mathClass
+        return mathClass
+    If testScore <= 99 AND testScore >= 38 Then
+        display ("Clear to take college-level math")
+    If testScore < 1 AND testScore > 99 Then
+        display ("ERROR: Invalid test score answer. Please refresh page and reenter valid test score."
+        + "\nValid answers are numbers 1-99")
+    End If
+End Module
+
+Module displayCoReq(mathClass)
+    If mathClass == 1 Then
+        display ("If your student wants to take Math for Liberal Arts, they have to also take MATH 0825")
+    Else If mathClass == 2 Then
+        display ("If your student wants to take Probability & Statistics, they have to also take MATH 0835")
+    Else If mathClass == 3 Then
+        display ("If your student wants to take Finite Math, they have to also take MATH 0845")
+    Else If mathClass == 4 Then
+        display ("If your student wants to take Foundations of Algebra, they have to also take MATH 0815")
+    Else If mathClass == 0 Then
+        display ("End of program. Refresh to run again.")
+    Else
+        display ("ERROR: Invalid test Math Class input. Please refresh page and reenter valid math class."
+        + "\nValid answers are numbers 1-4")
+    End If
+End Module
